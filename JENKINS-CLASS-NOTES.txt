@@ -1,0 +1,332 @@
+=============================Jenkins=================================
+Jenkins is a CI & CD tool which is used to automate application
+build & deployment process.
+
+CI & CD : Continuos Integration and Continuos Delivery.
+
+It is an open source software
+
+It was developed by Sun MicroSystem as part of Hudson Project(2004)
+
+It is renamed to 'Jenkins' in 2011 by Oracle Corporataion.
+
+It is developed in java (Now it is migrated to Spring)
+
+As part of  Jenkins we are going to use below tools
+----------------------------------------------------
+1) Maven 
+2) SVN or GIT
+
+Maven : It is a build tool
+-------------------------
+-> To download Jars
+-> Compilation of java classes
+-> Test excecution (Junits)
+-> Packaging (jar/war/ear)
+
+
+GIT
+---
+It is Repository Server
+
+We are going to store project source code in Git Repository
+
+Note : In Git repository we will maintain branches.
+
+Git branches are specific to environments.
+
+Application Environments
+-------------------------
+DEV
+QA
+UAT
+Pilot
+Production etc..
+
+Teams
+-----
+Functional Team
+Dev Team
+Testing Team
+Build Team (DevOps Team)
+
+Developer Roles
+---------------
+1) Understanding Requirements
+2) Desiging Requriements
+3) Coding
+4) Unit Testing
+5) Integration Testing
+6) Code Review
+7) Push Code To Repository
+8) Send Email to DevOps team to create Job
+9) Deploy code to server using Jenkins job
+
+
+DevOps Team Roles
+-----------------
+1) Install Jenkins Software
+2) Create Environments
+3) Create jobs
+
+
+Build + Deployment Process
+-------------------------
+1) Pull code from Git Repo
+2) Compile source code
+3) Execute Junits
+4) Packaging application
+5) Deploy war to server
+
+Deployment we can do in 2 ways
+-------------------------------
+1) Manual Deployment
+2) Automated Deployment
+
+Note: Manual deployment requires resources & they need to spend lot of time to deploy.
+
+To avoid manual deployment challenges now a days companies preferring automated deployment by using tools like Jenkins.
+
+To do build and deployment process, we are going to use Jenkins software.
+
+Installing Jenkins Software
+---------------------------
+1) Download Jenkins zip file based OS
+2) Extract that zip then you can see jenkins.msi
+3) After Installing Jenkins execute below command
+
+    java -jar jenkins.war
+
+Note: Default Port number is 8080
+
+To start jenkins with different port number use below command
+
+   java -jar jenkins.war --httpPort=9090
+
+4) Open Browser and enter localhost:9090
+
+5) Unlock Jenkins screen will be opened. Enter admin password and click on Continue
+
+6) Click on Selected Plugins options
+
+7) Create Account with username & password
+
+Creating First Job
+-------------------
+1) File ---> New Item -> Enter Job Name
+	-> Freestyle Project
+
+2) Enter Description
+
+3) Source Code management --> None
+
+4) Build trigger  -> Periodically
+	Cron expression --> * * * * *
+
+5) Build -> Execute Windows command
+
+6) Post Build Actions (Skip it)
+
+
+Git Repo URL : 
+----------------
+https://github.com/Java-Project-03-9AM/SpringFormApp.git
+
+Build Tool : Maven
+
+
+Create Jenkins Job to Deploy Maven Project which is in Git Repo
+---------------------------------------------------------------
+1) Install Java
+2) Start Jenkins
+3) Add JAVA_HOME in jenkins
+4) Create Jenkins Job
+5) Run Jenkins Job
+
+Workflow in realtime
+--------------------
+1) Dev team will send request to Git admin to create Git Repository for project.
+
+2) Dev team will write code & will push to Git repo 
+
+3) Dev/Testing team will send request to DevOps team to create Jenkins jobs with Repo url and branch details.
+
+4) Devops team will create jobs according to dev/testing team requirements
+
+5) Dev & Testing team will run jenkins jobs to build & deploy code.
+
+
+Mail format to send Jenkins Job Creation request to Devops Team
+----------------------------------------------------------------
+From : ashok.b@ibm.com
+To : csldevops@ibm.com
+
+Subject : Jenkins Job Creation Request
+
+Hi Team,
+
+We need new jenkins job for QA environment
+
+Git URL : <provide url here>
+Git Branch Name : <provide branch name here>
+
+Thanks & Regards,
+Ashok.
+
+Jenkins Job Execution Flow
+--------------------------
+1) Run Jenkins Job
+
+2) Jenkins will clone Git Repository based on GIT Repo URL & Branch provided in job configuration.
+
+3) Jenkins will trigger Maven goals provided in job configuration.
+		
+	- maven will clean project
+        - maven will compile project
+	- maven will execute junits
+	- maven will package
+
+4) Jenkins will take packaged file and will deploy in server.
+	
+Jenkins Job Creation For Build & Deployment
+--------------------------------------------
+1) Install tomcat server in system
+
+2) Add manager-script role in tomcat-users.xml file which is in conf folder.
+
+3) Install 'Deploy To Container' plugin in jenkins
+
+4) Restart Jenkins
+
+5) Create Jenkins job
+	- Add Post Build Action to deploy to server
+
+Note: Make sure server is running
+
+
+Pipeline in Jenkins
+-------------------
+Pipeline is sequence of jobs 
+
+Interconnected jobs are called as Pipeline
+
+To create Pipeline in jenkins, we should install 'build pipeline' plugin in 'Plugins Manager'.
+
+Procedure to install 'build pipeline' plugin
+---------------------------------------------
+ -> Go to jenkins home page
+ -> Click on Manage Jenkins
+ -> Click on Manage Plugins
+ -> Click on'Available' tab and search for 'build pipeline'
+ -> Select checkbox and click on 'Install without Restart'
+ -> After Installation successful Restart Jenkins
+
+Note: To verify plugin installation, Click on '+' symbol in Jenkins Dashboard.
+
+Procedure To Create Pipeline
+-----------------------------
+1) Create DEV Environment Job
+
+2) Create QA Environment Job
+
+Note: QA job should execute when DEV job executed successfully
+
+3) Create Pipeline (Configure DEV job as initial Job)
+
+
+Email Notifications From Jenkins
+--------------------------------
+When Jenkins job is executed it is highly recommended to send email notification to team members with Job status.
+
+Instead of sending that email manually, we can configure email functionality in jenkins so that when jenkins job is executed email will be sent.
+
+Note: Project will have DL, we can configure that DL in jenkins email notification (Email will be sent to all emails which are part of DL).
+
+
+Procedure to configure Email Notifications
+------------------------------------------
+1) Add SMTP server in Jenkins
+
+    -> Go to Jenkins Home Page
+    -> Click On Manage Jenkins
+    -> Click on 'Configure System'
+    -> Enter SMTP details in Email Notification Section
+
+For Gmail SMTP details access below link
+
+URL : https://domar.com/smtp_pop3_server
+
+Note: SMTP details will be provided by Company
+
+2) Add Email Notification to Jenkins Job as 'Post Build Action'
+
+------------------------------Done------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

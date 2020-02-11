@@ -1,0 +1,25 @@
+spring: 
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver 
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: scott
+    password: tiger
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle10gDialect
+        format_sql: true
+
+form-app: 
+  messages: 
+    succMsg: User Registration SucessFully-PROD
+    failMsg: User Registration Failed Please Fill Correct Info-PROD 
+    updateMsg: User Update SuccessFully...!!
+    restSaveMSg : User  data saved with id==>         
+    deleteMsg : User Data Deleted Successfully with id==>     
+     
+      
+    

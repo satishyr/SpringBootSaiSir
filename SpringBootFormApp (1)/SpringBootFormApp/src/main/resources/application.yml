@@ -1,0 +1,36 @@
+#Server Cofiguration
+server:
+  port: 9090
+  #Context path configuration
+  servlet:
+    context-path: /SBFormApp
+#MVC view Resolver Configuration  
+spring:
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .jsp
+#Profile related Config
+  profiles:
+    active: qa        
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"        
+#custom messages for registration related in default profile
+form-app: 
+  messages: 
+    succMsg: User Registration SucessFully-default
+    failMsg: User Registration Failed Please Fill Correct Info-default
+    updateMsg: User Update  SuccessFully...!!
+    restSaveMSg : User  data saved with id==>         
+    deleteMsg : User Data Deleted Successfully with id==> 
+
+info: 
+  application-name: SpringBootUserCrudApp
+  status: Up and Running
+   
+      
+    

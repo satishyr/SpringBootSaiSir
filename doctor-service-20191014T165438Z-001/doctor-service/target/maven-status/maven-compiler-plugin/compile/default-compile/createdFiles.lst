@@ -1,0 +1,5 @@
+com\sai\entities\Doctor.class
+com\sai\repositories\DoctorRepository.class
+com\sai\resources\DoctorResource.class
+com\sai\services\DoctorService.class
+com\sai\DoctorServiceApplication.class

@@ -1,0 +1,4 @@
+com\sai\conditions\MyBeanMethod1Condition.class
+com\sai\config\MyConfiguration.class
+com\sai\SpringBootConditionApp1Application.class
+com\sai\conditions\MyBeanMethod2Condition.class

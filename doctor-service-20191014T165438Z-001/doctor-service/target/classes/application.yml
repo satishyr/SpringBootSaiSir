@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: DoctorService
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: ${portno:8181}
+  
+eureka: 
+  client:  
+    serviceUrl: 
+       defaultZone: ${EUREKA_URI:http://localhost:9090/eureka/}
+  instance:
+    prefer-ip-address: true

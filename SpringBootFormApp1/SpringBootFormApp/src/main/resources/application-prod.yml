@@ -1,0 +1,27 @@
+ 
+ 
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    
+  jpa:
+     show-sql: true
+     hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+
+form-app: 
+  messages: 
+    succMsg: User Registration SucessFully-PROD
+    failMsg: User Registration Failed Please Fill Correct Info-PROD 
+    updateMsg: User Update SuccessFully...!!
+    restSaveMSg : User  data saved with id==>         
+    deleteMsg : User Data Deleted Successfully with id==>     
+     
+      
+    

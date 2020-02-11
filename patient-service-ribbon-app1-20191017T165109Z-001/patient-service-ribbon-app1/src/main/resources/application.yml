@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: PatientService
+
+server:
+  port: ${portno:9191}
+  
+DOCTOR-SERVICE:
+  ribbon:
+    client:
+      enabled: false
+    listOfServers: localhost:8181,localhost:8182
+    
+eureka:
+  client:
+    enabled: false
